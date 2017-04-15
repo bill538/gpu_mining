@@ -5,7 +5,7 @@
 The below steps have been tested on sgminer-gm & sgminer-nicehash
 
 
-Download and install Video drivers
+### Download and install Video drivers
   1. Web to http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk. Download the latest version. This was tested on ADL_SDK10.2
   2. Copy ALD_SDK zip file to /tmp
   3. mkdir /opt/ADL_SDK
@@ -19,7 +19,7 @@ Download and install Video drivers
   11. ./amdgpu-pro-install --compute
   12. aptitude install libdrm-amdgpu-pro-dev libgbm1-amdgpu-pro-dev libglamor-amdgpu-pro-dev
 
-Building sgminer-nicehash
+### Building sgminer-nicehash
   1. sudo apt-get install build-essential libcurl4-openssl-dev git automake libtool libjansson* libncurses5-dev
   2. git clone --recursive https://github.com/nicehash/sgminer.git
   3. mv sgminer sgminer-nicehash
@@ -31,7 +31,7 @@ Building sgminer-nicehash
   8. make install
   9. /opt/sgminer-nicehash/bin./sgminer -n
 
-Bulding sgminer-gm
+### Bulding sgminer-gm
   1. sudo apt-get install build-essential libcurl4-openssl-dev git automake libtool libjansson* libncurses5-dev
   2. git clone --recursive https://github.com/genesismining/sgminer-gm
   3. cd sgminer-gm
