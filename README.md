@@ -1,7 +1,7 @@
 # gpu_mining
 
 
-## Step to configure AMD drivers on Ubuntu 14.04.5 & 16.04
+## Steps to configure AMD drivers on Ubuntu 14.04.5 & 16.04
 The below steps have been tested on sgminer-gm & sgminer-nicehash
 
 
