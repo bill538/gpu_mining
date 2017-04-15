@@ -7,11 +7,11 @@ The below steps have been tested on sgminer-gm & sgminer-nicehash
 
 1. Download 
 ..1. Web to http://support.amd.com/en-us/download and download the latest version for you card. This was last tested on 17.10 64bit
-..2. Copy downloaded file to tmp
-..3. tar xfvpJ amdgpu-pro-17.10-401251.tar.xz
-..4. cd amdgpu-pro-17.10-401251
-..5. ./amdgpu-pro-install --compute
-..6. aptitude install libdrm-amdgpu-pro-dev libgbm1-amdgpu-pro-dev libglamor-amdgpu-pro-dev
+..1. Copy downloaded file to tmp
+..2. tar xfvpJ amdgpu-pro-17.10-401251.tar.xz
+..1. cd amdgpu-pro-17.10-401251
+..1. ./amdgpu-pro-install --compute
+..1. aptitude install libdrm-amdgpu-pro-dev libgbm1-amdgpu-pro-dev libglamor-amdgpu-pro-dev
 
 2. Building sgminer-nicehash
 ..1. sudo apt-get install build-essential libcurl4-openssl-dev git automake libtool libjansson* libncurses5-dev
