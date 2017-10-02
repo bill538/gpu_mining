@@ -43,3 +43,22 @@ The below steps have been tested on sgminer-gm & sgminer-nicehash
   9. make
   10. make install
   11. /opt/sgminer-gm/bin/sgminer -n
+  
+  
+  
+  
+## ROCM Kernel
+  1. sudo apt-get update
+  2. sudo apt-get upgrade
+  3. wget -qO - http://repo.radeon.com/rocm/apt/debian/rocm.gpg.key | sudo apt-key add -
+  4. sudo sh -c 'echo deb [arch=amd64] http://repo.radeon.com/rocm/apt/debian/ xenial main > /etc/apt/sources.list.d/rocm.list'
+  5. sudo apt-get remove rocm-smi
+  6. sudo apt-get update
+  7. sudo apt-get install rocm
+  8. sudo vim /etc/default/grub and add the below line below 
+```
+#2MB fragments for Ellesmere are enabled with a grub option:
+GRUB_CMDLINE_LINUX="amdgpu.vm_fragment_size=9"
+```
+  9. sudo update-grub 
+ 10. sudo reboot
