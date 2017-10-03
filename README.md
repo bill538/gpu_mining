@@ -62,3 +62,70 @@ GRUB_CMDLINE_LINUX="amdgpu.vm_fragment_size=9"
 ```
   9. sudo update-grub 
  10. sudo reboot
+ 
+ 
+ 
+ 
+## Steps to configure Nvidia drivers on Ubuntu 14.04.5 & 16.04
+
+  1. Remove Previous Installations (Important)
+```
+sudo apt-get purge nvidia*
+sudo apt-get autoremove 
+```
+  2. The latest NVIDIA driver for Linux OS can be fetched from NVIDIA's official website. The first one in the list, i.e. Latest Long Lived Branch version for Linux x86_64/AMD64/EM64T, is suitable for most case.  If you want to down load the driver directly in a Linux shell, the script below would be useful.
+```
+cd ~
+wget http://us.download.nvidia.com/XFree86/Linux-x86_64/384.69/NVIDIA-Linux-x86_64-384.69.run
+```
+  3. Install Dependencies
+```
+sudo apt-get install build-essential gcc-multilib dkms
+```
+  4. Creat Blacklist for Nouveau Driver
+```
+Create a file at /etc/modprobe.d/blacklist-nouveau.conf with the following contents:
+
+blacklist nouveau
+options nouveau modeset=0
+```
+  5. Update Grub
+```
+sudo update-initramfs -u
+```
+  6. Reboot
+```
+sudo reboot
+```
+  7. Stop x server
+```
+For Ubuntu 14.04 / 16.04, excuting sudo service lightdm stop (or use gdm or kdm instead of lightdm)
+For Ubuntu 16.04 / Fedora / CentOS, excuting sudo systemctl stop lightdm (or use gdm or kdm instead of lightdm)
+```
+  8. Excuting the Runfile
+```
+cd ~
+chmod +x NVIDIA-Linux-x86_64-384.69.run
+sudo ./NVIDIA-Linux-x86_64-384.69.run --dkms -s
+```
+  9. Check nvida driver is loaded
+```
+root@wlh-miner2:~# nvidia-smi 
+Mon Oct  2 20:38:17 2017       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 384.69                 Driver Version: 384.69                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 950     Off  | 00000000:04:00.0 Off |                  N/A |
+|  0%   25C    P0    22W /  75W |      0MiB /  1996MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+```
